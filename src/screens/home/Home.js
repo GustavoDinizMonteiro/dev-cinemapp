@@ -34,7 +34,6 @@ class Home extends React.Component {
   render() {
     const { data, favorite } = this.state
     const { data: favoriteList } = this.props.favorites
-    console.log(Object.entries(favoriteList));
     return (
       <Container>
         <Title>Cinema APP</Title>
