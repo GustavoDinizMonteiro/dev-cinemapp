@@ -8,7 +8,7 @@ import provider from '../../providers/OmdbProvide'
 import { Container, Title, Label } from './styles'
 import Swal from 'sweetalert2'
 
-const isFavorite = (favorites, id) => favorites.includes(id)
+const isFavorite = (favorites, id) => favorites.hasOwnProperty(id)
 
 class Home extends React.Component {
   state = { data: [] }
@@ -27,8 +27,8 @@ class Home extends React.Component {
     }
   }
 
-  toggleFavorite = id => {
-    this.props.dispatch(favorites.toggleFavorite(id))
+  toggleFavorite = movie => {
+    this.props.dispatch(favorites.toggleFavorite(movie))
   }
 
   render() {
@@ -43,7 +43,7 @@ class Home extends React.Component {
 
         <Fragment>
           { data.map(movie => 
-            <Movie key={movie.imdbID} toggleFavorite={() => this.toggleFavorite(movie.imdbID)}
+            <Movie key={movie.imdbID} toggleFavorite={() => this.toggleFavorite(movie)}
               favorite={isFavorite(favoriteList, movie.imdbID)} name={movie.Title} year={movie.Year}/>
           )}
         </Fragment>

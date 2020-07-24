@@ -1,17 +1,17 @@
 import { states } from '../actions/favorites'
 
-const favorites = (state = { data: [] }, action) => {
+const favorites = (state = { data: {} }, action) => {
   switch (action.type) {
     case states.toggleFavorite.start:
       return { ...state }
 
     case states.toggleFavorite.success:
-      if (state.data.includes(action.data)) {
-        return {
-          data: state.data.filter(el => el !== action.data)
-        }
+      if (state.data.hasOwnProperty(action.data.imdbID)) {
+        delete state.data[action.data.imdbID]
+        return { ...state }
       }
-      return { data: [ ...state.data, action.data ] }
+      state.data[action.data.imdbID] = action.data
+      return { ...state }
     
     default:
       return state
