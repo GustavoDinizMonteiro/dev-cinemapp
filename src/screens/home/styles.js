@@ -29,3 +29,16 @@ export const Title = styled.p`
 export const Label = styled.p`
   ${text}
 `
+
+export const Favorites = styled.button`
+  align-self: flex-end;
+  margin-right: 3vw;
+  width: 100px;
+  height: 30px;
+  min-height: 30px;
+  margin-bottom: 10px;
+  color: white;
+  background-color: #0073b1;
+  border: none;
+  font-weight: bold;
+`
